@@ -1,17 +1,17 @@
 //Création du module produit. Son but est de récupérer les différentes informations stockées dans products-data.js
 let product = function (){
-    //Toutes les informations récoltées ont pour but d'être transférées sur telle ou telle colonne du tableau de index.html
-    function get_product_name(n){//On commence par le nom du produit en fonction de l'indice
+    //Toutes les informations récoltées ont pour but d'être transférées sur une colonne du tableau d'index.html
+    function get_product_name(n){//Nom du produit
         return products_data[n]["name"];
     }
-    function get_product_time(n){//On prend le temps que met le produit à être réalisé
+    function get_product_time(n){//Temps nécessaire à sa réalisation
         return products_data[n]["time"];
     }
-    function get_product_components_name(n){//On cherche les noms des composants du produit
-        let longueur_tab_product = products_data[n]["components"].length;
+    function get_product_components_name(n){//Tous les composants nécessaires à la réalisation du produit
+        let longueur_tab_product = products_data[n]["components"].length;//Clarté du code
         let product_components_name = Array (longueur_tab_product);//Utilisation d'un tableau pour stocker les composants
         for (let i = 0; i <  longueur_tab_product; i++){
-            let indice = products_data[n]["components"][i];
+            let indice = products_data[n]["components"][i];//Clarté du code
             product_components_name[i] = " " + component().component_name(indice);//Utilisation du components_access.js + un espace pour l'affichage
         }
         return product_components_name;//On retourne le tableau
@@ -39,8 +39,8 @@ let product = function (){
             if(component().component_needrecipe(indice) === '1'){//On les additionne au fur et à mesure.
                 product_components_recipe++;
             }
-        };
-        return product_components_recipe;//On renvoit le nombre total de récipient
+        }
+        return product_components_recipe;//On renvoie le nombre total de récipient
     }
     function get_product_components_bulk(n){//On cherche si tous les produits sont trouvables "en vrac" ou non
         let longueur_tab_product = products_data[n]["components"].length;
