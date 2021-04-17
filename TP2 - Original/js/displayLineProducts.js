@@ -2,7 +2,7 @@
 let create_product_line = (function (){                  
     function create_line(n){//Fonction principale
         let tab_prod = document.getElementById("tab_prod");//On recherche l'élément du tableau dans lequel on va afficher la ligne.
-        let line_tab_prod = tab_prod.insertRow(n);//On insert une ligne dans cet élément
+        let line_tab_prod = tab_prod.insertRow(n + 1);//On insert une ligne dans cet élément
         for (let i = 0; i < 6; i++){
             let cell = line_tab_prod.insertCell(i);//On insert une celule dans cette ligne en particulier
             //Encore une fois une méthode approximative mais nous n'avons pas trouvé de meilleure solution

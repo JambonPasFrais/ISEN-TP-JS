@@ -1,6 +1,6 @@
 //Création du module produit. Son but est de récupérer les différentes informations stockées dans products-data.js
-let product = (function (){
-    //Toutes les informations récoltés ont pour but d'être transférée sur telle ou telle colonne du tableau de index.html
+let product = function (){
+    //Toutes les informations récoltées ont pour but d'être transférées sur telle ou telle colonne du tableau de index.html
     function get_product_name(n){//On commence par le nom du produit en fonction de l'indice
         return products_data[n]["name"];
     }
@@ -17,13 +17,18 @@ let product = (function (){
         return product_components_name;//On retourne le tableau
     }
     function get_product_components_price(n){//On cherche le prix total du produit
-        let longueur_tab_product = products_data[n]["components"].length;
         let product_components_price = 0;
-        for (let i = 0; i <  longueur_tab_product; i++){
-            let indice = products_data[n]["components"][i];
-            //On stocke le prix au fur et à mesure des itérations
-            product_components_price += component().component_price(indice) * component().component_percentused(indice);
+        for (let i = 0; i <  products_data[n].components.length; i++){
+            let indice = products_data[n].components[i];
+            //On stocke le prix au fur et à mesure des itérations. La formule varie en fonction du type du composant
+            if (component().component_type(Number(indice)) === 'tool'){
+                product_components_price += Number(component().component_price(indice));
+            }
+            else{
+                product_components_price += Number(component().component_price(indice)) * Number(component().component_percentused(indice));
+            }
         }
+
         return product_components_price;//A la fin de la boucle on retourne le prix total du produit
     }
     function get_product_components_recipe(n){//On cherche si les composants du produit ont besoin d'un récipient ou non
@@ -31,7 +36,7 @@ let product = (function (){
         let product_components_recipe = 0
         for (let i = 0; i < longueur_tab_product; i++){
             let indice = products_data[n]["components"][i];
-            if(component().component_needrecipe(indice) == 1){//On les additionne au fur et à mesure.
+            if(component().component_needrecipe(indice) === 1){//On les additionne au fur et à mesure.
                 product_components_recipe += 1;
             }
         }
@@ -44,11 +49,11 @@ let product = (function (){
             let indice = products_data[n]["components"][i];
             product_components_bulk += component().component_needrecipe(indice);
         }
-        if (product_components_bulk == 0) {
-            return "oui";//Oui si tous trouvables "en vrac"
+        if (product_components_bulk === 0) {
+            return "Oui";//Oui si tous trouvables "en vrac"
         }
         else {
-            return "non";//Non si pas tous trouvables "en vrac"
+            return "Non";//Non si pas tous trouvables "en vrac"
         }
     }
 
@@ -61,4 +66,4 @@ let product = (function (){
         product_recipe: (n) => get_product_components_recipe(n),
         product_bulk: (n) => get_product_components_bulk(n)
     }
-})
+}
