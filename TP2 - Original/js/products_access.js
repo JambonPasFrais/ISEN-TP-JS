@@ -36,24 +36,24 @@ let product = function (){
         let product_components_recipe = 0
         for (let i = 0; i < longueur_tab_product; i++){
             let indice = products_data[n]["components"][i];
-            if(component().component_needrecipe(indice) === 1){//On les additionne au fur et à mesure.
-                product_components_recipe += 1;
+            if(component().component_needrecipe(indice) === '1'){//On les additionne au fur et à mesure.
+                product_components_recipe++;
             }
-        }
+        };
         return product_components_recipe;//On renvoit le nombre total de récipient
     }
     function get_product_components_bulk(n){//On cherche si tous les produits sont trouvables "en vrac" ou non
         let longueur_tab_product = products_data[n]["components"].length;
-        let product_components_bulk = 0;
+        let product_components_bulk = '';
         for (let i = 0; i < longueur_tab_product; i++){
             let indice = products_data[n]["components"][i];
-            product_components_bulk += component().component_needrecipe(indice);
+            product_components_bulk += component().component_bulk(indice);
         }
-        if (product_components_bulk === 0) {
-            return "Oui";//Oui si tous trouvables "en vrac"
+        if (product_components_bulk.indexOf('0') === -1) {//Si on ne trouve aucun 0 dans la string
+            return "Oui";//Oui si tout trouvable "en vrac"
         }
         else {
-            return "Non";//Non si pas tous trouvables "en vrac"
+            return "Non";//Non si pas tout trouvable "en vrac"
         }
     }
 
