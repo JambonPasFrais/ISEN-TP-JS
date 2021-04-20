@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tchat</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="../css/index.css">
+    </head>
+    <body>
+        <ul id="messages"></ul>
+        <form id="chatForm" action="">
+            <input id="input" autocomplete="off"/><button>Send</button>
+        </form>
+        <table id="connectedUser">
+            <tr>
+                <td>Liste des utilisateurs connectés :</td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        let socket = io();
+    </script>
+    <script src="../js/main.js"></script>
+</html>
