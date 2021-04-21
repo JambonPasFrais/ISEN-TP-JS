@@ -1,0 +1,14 @@
+{
+  "players": [
+    {
+      "name": "Valentin",
+      "gamesNb": 10,
+      "nbTry": 10
+    },
+    {
+      "name": "",
+      "gamesNb": 0,
+      "nbTry": 10
+    }
+  ]
+}

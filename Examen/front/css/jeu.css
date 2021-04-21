@@ -1,0 +1,44 @@
+body{
+    background-color: #DEB887!important;
+    display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+    text-align: center!important;
+}
+#welcome{
+    grid-area: 1 / 1 / 2 / 5;
+    border: solid thin red;
+    margin: 3px;
+}
+#stats{
+    grid-area: 2 / 4 / 4 / 5;
+    border: solid thin red;
+    margin: 3px;
+    margin: auto;
+}
+#potence{
+    grid-area: 2 / 1 / 4 / 2;
+    border: solid thin red;
+    margin: 3px;
+}
+#wordTab{
+    grid-area: 2 / 2 / 3 / 4;
+    border: solid thin red;
+    margin: auto;
+    padding: auto;
+    border-collapse: collapse;
+    display: block;
+}
+#wordTab td{
+    padding: 10px;
+}
+#jeu{
+    grid-area: 3 / 2 / 4 / 4;
+    border: solid thin red;
+    margin: 3px;
+}
+#input{
+    width: 80%;
+    margin: auto;
+    margin-top: 2px;
+}

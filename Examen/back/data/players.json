@@ -1,0 +1,19 @@
+{
+  "players": [
+    {
+      "name": "Valentin",
+      "gamesNb": 63,
+      "nbTry": 10
+    },
+    {
+      "name": "DogSandwich>all",
+      "gamesNb": 0,
+      "nbTry": 100
+    },
+    {
+      "name": "ViveLeJs",
+      "gamesNb": 1,
+      "nbTry": 100
+    }
+  ]
+}

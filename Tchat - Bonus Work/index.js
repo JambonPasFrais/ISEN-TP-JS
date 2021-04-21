@@ -59,7 +59,6 @@ app.get('/', (req, res) =>{
 //app.post
 app.post('/login', body('login').isLength({ min: 3 }).trim().escape(), (req, res) => {
     const login = req.body.login
-  
     // Error management
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -68,7 +67,7 @@ app.post('/login', body('login').isLength({ min: 3 }).trim().escape(), (req, res
     } else {
       // Store login
       req.session.username = login;
-      req.session.save()
+      req.session.save();
       res.redirect('/');
     }
   });
